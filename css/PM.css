@@ -1,0 +1,49 @@
+@charset "utf-8";
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: "微软雅黑";
+}
+body{
+	background-color: #73CFF1;
+}
+h1{
+	text-align: center;
+	color: #73CFF1;
+	background-color: #006A92;
+	height: 45px;
+}
+.received_box{
+	text-align: left;
+	margin-left: 5%;
+	margin-right: 20%;
+	background-color: #C9F1FF;
+	border-left: 5px solid deepskyblue;
+}
+.sended_box{
+	text-align: right;
+	margin-left: 20%;
+	margin-right: 5%;
+	background-color: #C9F1FF;
+	border-right: 5px solid deepskyblue;
+}
+.username{
+	font-size:large;
+	line-height: 23px;
+	font-weight: 800;
+	color: #006a92;
+}
+.time{
+	font-size:small;
+	color: #759AAD;
+}
+li{
+	list-style-type:none;
+	margin-top: 5px;
+}
+li a{
+	margin-left: 5%;
+	font-size: large;
+	color: #006a92;
+	
+}

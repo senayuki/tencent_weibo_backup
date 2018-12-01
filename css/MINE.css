@@ -1,0 +1,98 @@
+*{
+	font-family: "微软雅黑";
+}
+.msgBox{
+	margin-left: 5%;
+	margin-right: 5%;
+	border-bottom: 1px dotted #e4e4e4;
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
+    border-bottom-color: rgb(228, 228, 228);
+}
+.userName{
+	font-weight: 800;
+	color: #006a92;
+}
+.QuserName{
+	margin-top: 10px;
+	margin-right: 20px;
+    margin-bottom: 1px;
+    margin-left: 20px;
+	font-style: normal;
+    font-weight: normal;
+	color: #006a92;
+}
+.time{
+	font-size:small;
+	color: #759AAD;
+}
+.replyBox .time{
+	
+	margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    
+}
+.replyBox{
+	margin-top: 10px;
+    margin-bottom: 10px;
+    background: #F8F8F8;
+	border: 1px solid #F0F0F0;
+}
+.replyBox .replyCnt{
+	margin-right: 20px;
+    margin-bottom: 1px;
+    margin-left: 20px;
+}
+.type{
+	background: #BDD3E0;
+	color: #fff;
+    padding: 0 5px 2px;
+    height: 18px;
+    border-radius: 2px;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+}
+.replyBox .picBox{
+	margin-right: 20px;
+    margin-bottom: 1px;
+    margin-left: 20px;
+}
+.imgItem{
+    width: 85px;
+    height: 85px;
+    overflow: hidden;
+	display:inline-block;
+}
+
+.imgItem img{
+	width: 85px;
+	left: 0px;
+	top: -32px;
+	display: inline;
+}
+
+.location{
+    color: #006a92;
+    font-size: 12px;
+}
+.replyBox .location{
+	margin-right: 20px;
+    margin-bottom: 1px;
+    margin-left: 20px;
+    color: #006a92;
+    font-size: 12px;
+}
+.replyBox .videoBox{
+	margin-right: 20px;
+    margin-bottom: 1px;
+    margin-left: 20px;
+    width: 120px;
+}
+.videoItem img{
+	width: 120px;
+	left: 0px;
+	top: -32px;
+	display: inline;
+}
