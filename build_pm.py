@@ -58,7 +58,7 @@ def build_user_html():
 				url=img[0]
 				name=url[url.rfind("/")+1:]#处理链接
 				if name in imglist.keys():
-					name="../PM_images/"+name+imglist[name]#得到完整文件名
+					name="../images/PM_images/"+name+imglist[name]#得到完整文件名
 
 					img_tag='<img class="image" src="'+name+'" height="200">\n'
 		except:
@@ -102,7 +102,7 @@ else:
 userlist_full = c.execute("SELECT DIAL FROM PM GROUP BY DIAL")#从PM列表筛选所有对话
 util.add_log('开始构建私信索引页,读取用户列表')
 
-for file in os.listdir(os.getcwd()+"\\PM_images"):#构建img扩展名对照表
+for file in os.listdir(os.getcwd()+"\\images\\PM_images"):#构建img扩展名对照表
     name=os.path.splitext(file)[0]
     ext=os.path.splitext(file)[1]
     imglist[name]=ext
