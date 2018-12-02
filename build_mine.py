@@ -74,7 +74,7 @@ def emojiInContent(content):#处理正文的emoji
 	emoji_urls=re.findall(pattern_emoji, content)
 	for emoji in emoji_urls:
 		file_name=emoji[emoji.rfind("/")+1:-2]
-		content=content.replace(emoji,'<img class"emoji" src="../emoji_images/'+file_name+'">')
+		content=content.replace(emoji,'<img class"emoji" src="../images/emoji_images/'+file_name+'">')
 	return content
 
 def imgInContent(dir,dict,content):#图片文件夹 扩展名字典 正文 处理正文中的图片链接
@@ -99,10 +99,10 @@ def build_msgBox(CID):
 	#本文用户名与类型
 	username='<div class="userName">'+msg_dict["AUTHOR"]+'<span class="type">'+TYPEDICT[msgtype]+'</span></div>\n'
 	#本文正文
-	content=imgInContent("mine_images",img_file_dict,emojiInContent(msg_dict["CONTENT"]))
+	content=imgInContent(IMG_DIR,img_file_dict,emojiInContent(msg_dict["CONTENT"]))
 	content='<div class="msgCnt">'+content+'</div>\n'
 	#获取图片
-	picbox=getTag_picBox("mine_images",img_file_dict,CID)
+	picbox=getTag_picBox(IMG_DIR,img_file_dict,CID)
 	#获取视频
 	videobox=getTag_videoBox(CID)
 	#获取心情
@@ -115,7 +115,7 @@ def build_msgBox(CID):
 	if isReply:#如果是转评
 		#处理转评特有内容
 		qusername='<div class="QuserName">'+msg_dict["QAUTHOR"]+'</div>'
-		qcontent=imgInContent("mine_images",img_file_dict,emojiInContent(msg_dict["QCONTENT"]))
+		qcontent=imgInContent(IMG_DIR,img_file_dict,emojiInContent(msg_dict["QCONTENT"]))
 		qcontent='<div class="replyCnt">'+qcontent+'</div>\n'
 		qtime='<div class="time">'+msg_dict["QTIME"]+'</div>\n'
 		#构建HTML
@@ -151,7 +151,7 @@ def openSQLite(uname):
 		print('未能找到数据库')
 		exit()
 	return c
-def export_html(start,end,msgBoxes):
+def export_html(start,end,msgBoxes,con_type):
 	timer=time.perf_counter()
 	HTML_HEAD='<!DOCTYPE html><html><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="../css/MINE.css" /></head><body>\n'
 	HTML_END='\n</body></html>'
@@ -162,12 +162,12 @@ def export_html(start,end,msgBoxes):
 	soup_timer=time.perf_counter()
 	soup = BeautifulSoup(html,"html.parser")#格式化HTML，耗时较长
 	print("bs4 HTML读入用时：%s"%(time.perf_counter()-soup_timer))
-	with open("MINE//"+start+"-"+end+".html","w",encoding="utf-8") as f:
+	with open(HTML_DIR+"//"+con_type+" "+start+"-"+end+".html","w",encoding="utf-8") as f:
 		f.write(soup.prettify())
 	print("输出HTML耗时%s"%(time.perf_counter()-timer))
 	print("输出结束 %s-%s\n"%(start,end))
 
-def build_HTML(cont_info_dict):
+def build_HTML(cont_info_dict,con_type):
 	a=0
 	day_start=""#存储其实日期
 	day_end=""#最后结束时的日期
@@ -189,11 +189,11 @@ def build_HTML(cont_info_dict):
 		if a==CUT:#加完之后等于分割数，则分页结
 			a=0#重置计数器
 			print("遍历用时：%s"%(time.perf_counter()-timer))
-			export_html(day_start,day_end,msgBoxes_list)
+			export_html(day_start,day_end,msgBoxes_list,con_type)
 			msgBoxes_list.clear()
 	#处理不足一整页的余下的信息
 	if len(msgBoxes_list)!=0:
-		export_html(day_start,day_end,msgBoxes_list)
+		export_html(day_start,day_end,msgBoxes_list,con_type)
 
 def build_dir(dir):
 	if not os.path.isdir(dir):
@@ -203,9 +203,26 @@ def build_dir(dir):
 uname="wanglei19990921"
 print ("你输入的用户ID是: " + uname)
 c=openSQLite(uname)
-build_dir("MINE")
-build_ext_dict("mine_images",img_file_dict)
-build_img_dict(c,"IMAGE",img_info_dict)
-build_content_list(c,"MINE",cont_info_dict)
+
+
+
+HTML_DIR="HTML"#输出文件存储目录
+
+select_type=input("请输入选择的表：0,MINE 广播; 1,FAVOR 收藏; 2,AT 提及\n")
+TYPE_DICT={
+	0:{"IMG_DIR":"images/mine_images","IMG_TABLE":"IMAGE","CON_TABLE":"MINE"},
+	1:{"IMG_DIR":"images/favor_images","IMG_TABLE":"FIMAGE","CON_TABLE":"FAVOR"},
+	2:{"IMG_DIR":"images/mine_images","IMG_TABLE":"IMAGE","CON_TABLE":"AT"}
+	}
+
+IMG_DIR=TYPE_DICT[int(select_type)]["IMG_DIR"]
+IMG_TABLE=TYPE_DICT[int(select_type)]["IMG_TABLE"]
+CON_TABLE=TYPE_DICT[int(select_type)]["CON_TABLE"]#输出的HTML前会带有表名
+
+
+build_dir(HTML_DIR)
+build_ext_dict(IMG_DIR,img_file_dict)
+build_img_dict(c,IMG_TABLE,img_info_dict)
+build_content_list(c,CON_TABLE,cont_info_dict)
 build_video_dict(c)
-build_HTML(cont_info_dict)
+build_HTML(cont_info_dict,CON_TABLE)

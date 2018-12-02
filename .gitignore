@@ -59,14 +59,9 @@ docs/_build/
 target/
 
 wanglei19990921.db
-PM
-emoji_images
-favor_images
-mine_images
-PM_images
-video_images
+images
 .project
 log.txt
-MINE
+HTML
 pm_index.html
 思路.md

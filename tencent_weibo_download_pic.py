@@ -109,8 +109,8 @@ else:
 
 print('----------------------------------------------------------------------------------')
 type='emoji'
-if not os.path.exists('.//'+type+'_images'):
-	os.mkdir('.//'+type+'_images')
+if not os.path.exists('.//images//'+type+'_images'):
+	os.mkdir('.//images//'+type+'_images')
 	util.add_log('新建'+type+'_images目录成功')
 print('开始下载EMOJI图片')
 olist = os.listdir(r'./'+type+r'_images')
@@ -127,8 +127,8 @@ util.add_log('EMOJI图片下载完毕')
 
 print('----------------------------------------------------------------------------------')
 type='video'
-if not os.path.exists('.//'+type+'_images'):
-	os.mkdir('.//'+type+'_images')
+if not os.path.exists('.//images//'+type+'_images'):
+	os.mkdir('.//images//'+type+'_images')
 	util.add_log('新建'+type+'_images目录成功')
 print('开始下载视频图片')
 olist = os.listdir(r'./'+type+r'_images')
@@ -145,8 +145,8 @@ util.add_log('视频图片下载完毕')
 
 print('----------------------------------------------------------------------------------')
 type='mine'
-if not os.path.exists('.//'+type+'_images'):
-	os.mkdir('.//'+type+'_images')
+if not os.path.exists('.//images//'+type+'_images'):
+	os.mkdir('.//images//'+type+'_images')
 	util.add_log('新建'+type+'_images目录成功')
 print('开始下载原文图片')
 olist = os.listdir(r'./'+type+r'_images')
@@ -163,8 +163,8 @@ util.add_log('原文图片下载完毕')
 
 print('----------------------------------------------------------------------------------')
 type='favor'
-if not os.path.exists('.//'+type+'_images'):
-	os.mkdir('.//'+type+'_images')
+if not os.path.exists('.//images//'+type+'_images'):
+	os.mkdir('.//images//'+type+'_images')
 	util.add_log('新建'+type+'_images目录成功')
 print('开始下载收藏图片')
 olist = os.listdir(r'./'+type+r'_images')
@@ -181,8 +181,8 @@ util.add_log('收藏图片下载完毕')
 
 print('----------------------------------------------------------------------------------')
 type='PM'
-if not os.path.exists('.//'+type+'_images'):
-	os.mkdir('.//'+type+'_images')
+if not os.path.exists('.//images//'+type+'_images'):
+	os.mkdir('.//images//'+type+'_images')
 	util.add_log('新建'+type+'_images目录成功')
 print('开始下载收藏图片')
 olist = os.listdir(r'./'+type+r'_images')
