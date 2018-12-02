@@ -11,7 +11,9 @@ pip install selenium
 下载geckodriver，将geckodriver.exe放入Python3根目录下  
 由于依靠QQ自动登陆登陆微博所以需要Windows，后续版本可能会添加对非登陆方式的支持  
 （但还是建议使用登陆方式，因为一页显示的内容更多  
-  
+使用了bs4格式化输出的HTML文本  
+pip install bs4
+
 特性  
 -
 数据库存储，方便查找  
@@ -27,8 +29,8 @@ EMOJI表：存储EMOJI名字（如果有）和链接
 VIDEO表：存储视频名，对应微博CID，原链接，封面  
 IMAGE表：存储MINE页（广播/评论）配图和AT页配图，用cid索引一条微博里的图片，rank表示顺序，转评插入的图片仅有链接（因为可以从正文标签过来查找  
 INFO表：暂时仅用来存储上次的进度  
-MINE表：存储MINE页原文信息和位置信息，emoji在原文中用\<emoji>标签标识链接，转评配图用\<img>标识链接  
-	type列含义：1 原创；2 转播；3 评论 
+MINE表：存储MINE页原文信息和位置信息，emoji在原文中用<emoji>标签标识链接，转评配图用<img>标识链接  
+	type列含义：1 原创；2 转播；3 评论；12 赞 
 AT表：存储AT页原文信息和位置信息
 FAVOR表：同MINE，用于存储favor页（收藏）内容  
 FIMAGE表：同IMAGE，用于存储favor页（收藏）配图  

@@ -21,9 +21,12 @@ def emojiInContent(content):
 	return content
 
 def timeConvert(timestamp):#输入UTC时间戳，返回北京时间
-	timestamp+=+28800
+	timestamp+=28800#加上8小时时间差
 	time_local = time.localtime(timestamp)
-	format_time = time.strftime("%Y/%m/%d %H:%M:%S", time_local)
+	format_time = time.strftime("%Y/%m-%d+ %H:%M:%S", time_local)
+	format_time = format_time.replace("/","年")
+	format_time = format_time.replace("-","月")
+	format_time = format_time.replace("+","日")
 	return format_time
 def get_username(inbox_list):#传入ID列表
 	for inbox in inbox_list:

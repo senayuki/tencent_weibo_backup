@@ -72,10 +72,10 @@
 	top: -32px;
 	display: inline;
 }
-
-.location{
+.location a{
     color: #006a92;
     font-size: 12px;
+    text-decoration:none
 }
 .replyBox .location{
 	margin-right: 20px;
@@ -95,4 +95,40 @@
 	left: 0px;
 	top: -32px;
 	display: inline;
+}
+.moodBox{
+	border: 1px solid #c2d5e8;
+	width: 320px;
+}
+.moodpic{
+	color: #757D7F;
+    font-size: 14px;
+    display: block;
+    padding-top: 1px;
+    font-weight: bold;
+	padding: 10px 5px;
+	margin: 0;
+	float: left;
+    width: 80px;
+    text-align: center;
+    line-height: 16px;
+}
+.moodcnt{
+	min-height: 48px;
+    padding: 15px 10px 8px;
+    border-left: 1px solid #dee9f3;
+    background: #fbfeff url(mood/moodLeftIcon.png) 0 bottom no-repeat;
+    overflow: hidden;
+    zoom: 1;
+    margin: 0;
+    min-height: 48px;
+    line-height: 24px;
+    color: #7c7d7e;
+    font-size: 14px;
+    display: block;
+}
+.replyBox .moodBox{
+	margin-right: 20px;
+    margin-bottom: 1px;
+    margin-left: 20px;
 }
